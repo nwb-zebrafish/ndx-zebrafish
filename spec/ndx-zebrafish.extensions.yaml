@@ -1,8 +1,26 @@
 groups:
-- neurodata_type_def: TetrodeSeries
-  neurodata_type_inc: ElectricalSeries
-  doc: An extension of ElectricalSeries to include the tetrode ID for each time series.
+- neurodata_type_def: ZebrafishBehaviorSeries
+  neurodata_type_inc: NWBContainer
+  doc: An extension of the NWB group to include all behavioral data from a zebrafish
+    traking experiemnt
   attributes:
-  - name: trode_id
+  - name: fish_id
     dtype: int32
-    doc: The tetrode ID.
+    doc: The fish ID.
+  datasets:
+  - neurodata_type_def: Orientation
+    neurodata_type_inc: SpatialSeries
+    default_name: orientation
+    doc: The direction the fish head points in a left coordinate system (angle increases
+      clockwise, zero points right
+    quantity: '?'
+  - neurodata_type_def: TailShape
+    neurodata_type_inc: SpatialSeries
+    default_name: tail_shape
+    doc: The shape of the tail recorded as relative angles to first tail segment
+    quantity: '?'
+  - neurodata_type_def: Coordinates
+    neurodata_type_inc: SpatialSeries
+    default_name: position
+    doc: The x,y position of the swim bladder in camera coordinates
+    quantity: '?'

@@ -11,6 +11,6 @@ namespaces:
   schema:
   - namespace: core
     neurodata_types:
-    - ElectricalSeries
+    - ZebrafishBehaviorSeries
   - source: ndx-zebrafish.extensions.yaml
   version: 0.1.0
