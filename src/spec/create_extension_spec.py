@@ -24,20 +24,20 @@ def main():
         contact=list(map(str.strip, """ruben.portugues@tum.de""".split(","))),
     )
 
-    ns_builder.include_type("ZebrafishBehaviorSeries", namespace="core")
+    ns_builder.include_type("ZebrafishBehavior", namespace="core")
 
     # TODO: define your new data types
     # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
     # for more information
-    FishGroup = NWBGroupSpec(
-        neurodata_type_def="ZebrafishBehaviorSeries",
+    ZebrafishBehavior = NWBGroupSpec(
+        neurodata_type_def="ZebrafishBehavior",
         neurodata_type_inc="NWBContainer",
-        doc="An extension of the NWB group to include all behavioral data from a zebrafish traking experiemnt",
+        doc="An extension of the NWB group to include all behavioral data from a zebrafish tracking experiemnt",
         attributes=[
             NWBAttributeSpec(name="fish_id", doc="The fish ID.", dtype="int32")
         ],
     )
-    FishGroup.add_dataset(
+    ZebrafishBehavior.add_dataset(
         default_name="orientation",
         neurodata_type_def="Orientation",
         neurodata_type_inc="SpatialSeries",
@@ -45,14 +45,14 @@ def main():
         doc="The direction the fish head points in a left coordinate system"
         " (angle increases clockwise, zero points right",
     )
-    FishGroup.add_dataset(
+    ZebrafishBehavior.add_dataset(
         default_name="tail_shape",
         neurodata_type_def="TailShape",
         neurodata_type_inc="SpatialSeries",
         quantity="?",
         doc="The shape of the tail recorded as relative angles to first tail segment",
     )
-    FishGroup.add_dataset(
+    ZebrafishBehavior.add_dataset(
         default_name="position",
         neurodata_type_def="Coordinates",
         neurodata_type_inc="SpatialSeries",
@@ -60,7 +60,7 @@ def main():
         doc="The x,y position of the swim bladder in camera coordinates",
     )
 
-    new_data_types = [FishGroup]
+    new_data_types = [ZebrafishBehavior]
 
     # export the spec to yaml files in the spec folder
     output_dir = os.path.abspath(

@@ -1,8 +1,8 @@
 groups:
-- neurodata_type_def: ZebrafishBehaviorSeries
+- neurodata_type_def: ZebrafishBehavior
   neurodata_type_inc: NWBContainer
   doc: An extension of the NWB group to include all behavioral data from a zebrafish
-    traking experiemnt
+    tracking experiemnt
   attributes:
   - name: fish_id
     dtype: int32
