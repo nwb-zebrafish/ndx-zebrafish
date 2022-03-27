@@ -10,7 +10,7 @@ from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBAttrib
 def main():
     # these arguments were auto-generated from your cookiecutter inputs
     ns_builder = NWBNamespaceBuilder(
-        doc="""NWB extensions for storing (larval) zebrafish expreiment related data""",
+        doc="""NWB extensions for storing (larval) zebrafish experiment related data""",
         name="""ndx-zebrafish""",
         version="""0.1.0""",
         author=list(
@@ -24,6 +24,8 @@ def main():
         contact=list(map(str.strip, """ruben.portugues@tum.de""".split(","))),
     )
 
+    ns_builder.include_type("NWBContainer", namespace="core")
+    ns_builder.include_type("SpatialSeries", namespace="core")
     ns_builder.include_type("ZebrafishBehavior", namespace="core")
 
     # TODO: define your new data types
