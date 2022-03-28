@@ -10,9 +10,5 @@ namespaces:
   name: ndx-zebrafish
   schema:
   - namespace: core
-    neurodata_types:
-    - NWBContainer
-    - SpatialSeries
-    - ZebrafishBehavior
   - source: ndx-zebrafish.extensions.yaml
   version: 0.1.0

@@ -24,39 +24,32 @@ def main():
         contact=list(map(str.strip, """ruben.portugues@tum.de""".split(","))),
     )
 
-    ns_builder.include_type("NWBContainer", namespace="core")
-    ns_builder.include_type("SpatialSeries", namespace="core")
-    ns_builder.include_type("ZebrafishBehavior", namespace="core")
-
     # TODO: define your new data types
     # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
     # for more information
     ZebrafishBehavior = NWBGroupSpec(
         neurodata_type_def="ZebrafishBehavior",
-        neurodata_type_inc="NWBContainer",
+        neurodata_type_inc="NWBDataInterface",
         doc="An extension of the NWB group to include all behavioral data from a zebrafish tracking experiemnt",
         attributes=[
             NWBAttributeSpec(name="fish_id", doc="The fish ID.", dtype="int32")
         ],
     )
-    ZebrafishBehavior.add_dataset(
-        default_name="orientation",
-        neurodata_type_def="Orientation",
+    ZebrafishBehavior.add_group(
+        name="orientation",
         neurodata_type_inc="SpatialSeries",
         quantity="?",
         doc="The direction the fish head points in a left coordinate system"
         " (angle increases clockwise, zero points right",
     )
-    ZebrafishBehavior.add_dataset(
-        default_name="tail_shape",
-        neurodata_type_def="TailShape",
+    ZebrafishBehavior.add_group(
+        name="tail_shape",
         neurodata_type_inc="SpatialSeries",
         quantity="?",
         doc="The shape of the tail recorded as relative angles to first tail segment",
     )
-    ZebrafishBehavior.add_dataset(
-        default_name="position",
-        neurodata_type_def="Coordinates",
+    ZebrafishBehavior.add_group(
+        name="position",
         neurodata_type_inc="SpatialSeries",
         quantity="?",
         doc="The x,y position of the swim bladder in camera coordinates",
